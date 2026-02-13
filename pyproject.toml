@@ -1,0 +1,41 @@
+[project]
+name = "tarvia-ai-rag"
+version = "0.1.0"
+description = "TARVIA AI RAG service powered by Anthropic."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "anthropic>=0.40.0",
+  "fastapi>=0.115.0",
+  "pydantic>=2.9.0",
+  "pypdf>=5.1.0",
+  "python-docx>=1.1.2",
+  "python-dotenv>=1.0.1",
+  "scikit-learn>=1.5.0",
+  "uvicorn>=0.32.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.0",
+]
+finetune = [
+  "accelerate>=1.2.0",
+  "datasets>=3.1.0",
+  "peft>=0.13.0",
+  "torch>=2.4.0",
+  "transformers>=4.46.0",
+]
+
+[project.scripts]
+tarvia-ingest = "tarvia_ai.ingest_cli:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
